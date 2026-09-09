@@ -158,30 +158,36 @@ cursor: pointer;
 >
 Войти
 </button>
-</a>
 <script src="https://gstatic.com"></script>
 <script src="https://gstatic.com"></script>
+
 <script>
-        const firebaseConfig = {
-            apiKey: "AIzaSyCotIms8W68WFjLGsFAsLV_tfwwshusHyw",
-            authDomain: "://firebaseapp.com",
-            databaseURL: "https://firebasedatabase.app",
-            projectId: "custom-site-40168",
-            storageBucket: "://appspot.com",
-            messagingSenderId: "23544350313",
-            appId: "1:23544350313:web:e3333d7c5164e5d0d344f8"
-        };
+    const firebaseConfig = {
+        apiKey: "AIzaSyCotIms8W68WFjLGsFAsLV_tfwwshusHyw",
+        authDomain: "custom-site-40168.firebaseapp.com",
+        databaseURL: "https://custom-site-40168-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "custom-site-40168",
+        storageBucket: "custom-site-40168.appspot.com",
+        messagingSenderId: "23544350313",
+        appId: "1:23544350313:web:e3333d7c5164e5d0d344f8"
+    };
+
     firebase.initializeApp(firebaseConfig);
     const database = firebase.database();
+    
     const LoginForm = document.getElementById('LoginForm');
     LoginForm.addEventListener('submit', function(event) {
         event.preventDefault();
-    const nameValue = document.getElementById('loginUserName').value;
-    const passValue = document.getElementById('loginPassword').value;
-database.ref('users/' + nameValue).once('value').then((snapshot) => {
+        
+        const nameValue = document.getElementById('loginUserName').value;
+        const passValue = document.getElementById('LoginPassword').value; // Исправили на большую L
+
+        database.ref('users/' + nameValue).once('value').then((snapshot) => {
             if (snapshot.exists()) {
                 const userData = snapshot.val();
                 if (userData.password === passValue) {
+                    sessionStorage.setItem('userLogin', nameValue);
+                    sessionStorage.setItem('isLoggedIn', 'true');
                     alert("Вход успешный! Добро пожаловать в Lanc code.");
                     window.location.href = "Altegio.html"; 
                 } else {

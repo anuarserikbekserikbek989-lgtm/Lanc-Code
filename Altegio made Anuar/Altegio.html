@@ -29,6 +29,7 @@ body   {
     }
 
     </style>
+    /*Шапка и верхнее меню*/
 <div style="
 background-color: rgb(46, 255, 4); color: rgb(46, 255, 4);
 width: 100%;
@@ -38,17 +39,6 @@ left: 0px;
 top: 0px;
 "
 ></div>
-<h1 style="
-left: 13%;
-top: 25%;
-position: absolute;
-font-weight: bold;
-font-family: Arial, Helvetica, sans-serif;
-font-size: 32px;
-width: 30%;
-height: 2%;
-line-height: 1.5;
-">Сайты, это не просто 1000 строк рандомного языка програмирования, это целые квадраты, различные рисунки, и кнопки.</h1>
 <button style="
 background-color: rgb(46, 255, 4);
 color: black;
@@ -65,7 +55,7 @@ transition: 0.2s;
 cursor: pointer;
 ">
 Поддержите меня!</button>
-<button style="
+<button onclick="checkAuth();" style="
 background-color: rgb(46, 255, 4);
 left: 25%;
 top: 10px;
@@ -80,6 +70,7 @@ transition: 0.2s;
 border-color: black;
 cursor: pointer;
 "> Заказать услугу</button>
+<a href="contacts.html">
 <button style="
 background-color: rgb(46, 255, 4);
 left: 38%;
@@ -96,6 +87,7 @@ border-color: black;
 cursor: pointer;
 "
 >Наши контакты</button>
+</a>
 <a href="register.html">
 <button  style="
 right: 27%;
@@ -134,20 +126,54 @@ cursor: pointer;
 Войти
 </button>
 </a>
-<img src="logo lanc code.png" style="
-right: 20px;
-top: 20%;
-position: absolute;"></img>
 <a href="Altegio.html">
 <button style="
 border: none;
-left: 0px;
+left: 53px;
 top: 0px;
 position: absolute;
 transition: 0.2s;
 height: 84px;
-width: 8%;
+width: 5%;
+background-color: rgb(46, 255, 4);
 "
 >
-<img src="Без имени.png" style="cursor: pointer;"></button>
+Главная
+</button>
+</a>
+/*Главная страница*/
+<img src="logo lanc code.png" style="
+right: 20px;
+top: 20%;
+position: absolute;"></img>
+<h1 style="
+left: 13%;
+top: 25%;
+position: absolute;
+font-weight: bold;
+font-family: Arial, Helvetica, sans-serif;
+font-size: 32px;
+width: 30%;
+height: 2%;
+line-height: 1.5;
+color: black;
+"
+>
+Сайты, это не просто 1000 строк рандомного языка програмирования, это целые квадраты, различные рисунки, и кнопки.
+</h1>
+</a>
+<a href="usluga.html">
+<button style="
+top: 75%;
+left: 29%;
+position: absolute;
+border-radius: 15px;
+transition: 0.6s;
+width: 19%;
+height: 67px;
+background-color: rgb(46, 255, 4);
+"
+>
+Заказать услугу ->
+</button>
 </a>

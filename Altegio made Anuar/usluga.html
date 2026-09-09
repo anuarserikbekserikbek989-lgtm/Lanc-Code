@@ -1,0 +1,320 @@
+<title>Заказать услугу</title>
+<style>
+button:hover {transform: scale(1.1);}
+body   {
+       background-image: url('background.png');
+       background-size: cover;
+       background-repeat: no-repeat;
+       background-position: center;
+       margin: 0; 
+}
+.slider-btn{
+    position: absolute;
+    top: 60%;
+    right: 13%;
+    background-color: rgb(218, 218, 218);
+    color: black;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    z-index: 10;
+    font-weight: bold;
+    font-size: 20px;
+    transition: transform 0.3s;
+    padding: 10px 15px;
+    transform: translateY(-50%);
+    }
+    .slider-btn :hover {
+        transform: translateY(1.2);
+    }
+
+    </style>
+    <!--*Кнопки и шапка-->
+    <div style="
+background-color: rgb(46, 255, 4); color: rgb(46, 255, 4);
+width: 100%;
+height: 84px;
+position: absolute;
+left: 0px;
+top: 0px;
+"
+></div>
+<button style="
+background-color: rgb(46, 255, 4);
+color: black;
+left: 12%;
+position: absolute;
+top: 10px;
+width: 124px;
+height: 64px;
+font-weight: bold;
+border-radius: 12px;
+border: 2px solid black;
+border-color: black;
+transition: 0.2s;
+cursor: pointer;
+">
+Поддержите меня!</button>
+<a href="usluga.html">
+<button onclick="checkAuth();" style="
+background-color: rgb(46, 255, 4);
+left: 25%;
+top: 10px;
+width: 124px;
+height: 64px;
+font-weight: bold;
+position: absolute;
+color: black;
+border-radius: 12px;
+border: 2px solid black;
+transition: 0.2s;
+border-color: black;
+cursor: pointer;
+"> Заказать услугу</button>
+</a>
+<a href="contacts.html">
+</a>
+<button style="
+background-color: rgb(46, 255, 4);
+left: 38%;
+top: 10px;
+width: 124px;
+height: 64px;
+font-weight: bold;
+position: absolute;
+color: black;
+border-radius: 12px;
+border: 2px solid black;
+transition: 0.2s;
+border-color: black;
+cursor: pointer;
+"
+>Наши контакты</button>
+</a>
+<a href="register.html">
+<button  style="
+right: 27%;
+top: 10px;
+border-radius: 75%;
+background-color: rgb(46, 255, 4);
+color: black;
+transition: 0.2s;
+cursor: pointer;
+position: absolute;
+border-color: black;
+font-weight: bold;
+width: 124px;
+height: 64px;
+border: solid black 2px;
+"
+>
+Регистрация
+</button>
+</a>
+<a href="login.html">
+<button style="
+background-color: white;
+border-radius: 75%;
+border: 2px black solid;
+font-weight: bold;
+right: 38%;
+position: absolute;
+top: 10px;
+height: 64px;
+width: 124px;
+transition: 0.2s;
+cursor: pointer;
+"
+>
+Войти
+</button>
+</a>
+<a href="Altegio.html">
+<button style="
+border: none;
+left: 53px;
+top: 0px;
+position: absolute;
+transition: 0.2s;
+height: 84px;
+width: 5%;
+background-color: rgb(46, 255, 4);
+"
+>
+Главная
+</button>
+</a>
+<!--Страница; Заказать услугу-->
+<h1 style="
+font: bold;
+font-size: 38px;
+font-family: Arial, Helvetica, sans-serif;
+position: absolute;
+top: 15%;
+left: 14%;
+color: black;
+"
+>
+Имя:
+</h1>
+<input id="clientName" readonly  style=
+"
+top: 28%;
+left: 14%;
+width: 12cm;
+height: 36px;
+position: absolute;
+background-color: transparent;
+border: 15px black;
+border-radius: 12px;
+font-family: Arial, Helvetica, sans-serif;
+font-size: 36px;
+cursor: not-allowed;
+">
+<h1 style="
+top: 35%;
+left: 14%;
+position: absolute;
+font-size: 38px;
+font-family: Arial, Helvetica, sans-serif;
+font-weight: bold;
+"
+>
+Ваш коментарий к заказу
+</h1>
+<textarea style="
+position: absolute;
+border-radius: 13px;
+border-color: rgb(131, 131, 131);
+top: 50%;
+font-size: 26px;
+font-family: Arial, Helvetica, sans-serif;
+font: bold;
+left: 14%;
+width: 38%;
+height: 17%;
+"
+ placeholder="Введите ваш коментарий" id="commentsite" required>
+</textarea>
+<input style="
+position: absolute;
+left: 57%;
+top: 28%;
+border: 3px rgb(131, 131, 131);
+border-radius: 13px;
+width: 12cm;
+height: 36px;
+font-family: Arial, Helvetica, sans-serif;
+font-size: 36px;
+"
+placeholder="+7 (XXX) XXXX" required
+id="phone_number"
+></input>
+<h1 style="
+top: 15%;
+left: 55%;
+position: absolute;
+font-size: 38px;
+font-family: Arial, Helvetica, sans-serif;
+font-weight: bold;
+width: 667px;
+"
+>
+Ваш номер телефона для связи
+</h1>
+<button id="sendOrderBtn" style="
+top: 50%;
+left: 55%;
+position: absolute;
+background-color: lawngreen;
+font-size: 36px;
+font-family: Arial, Helvetica, sans-serif;
+font-weight: bold;
+border-radius: 12px;
+border: 0.001cm black solid;
+transition: 0.2s;
+height: 0.6sm;
+width: 9cm;
+"
+>
+Отправить заказ
+</button>
+<script src="https://gstatic.com"></script>
+<script src="https://gstatic.com"></script>
+
+<script>
+    const firebaseConfig = {
+        apiKey: "AIzaSyCotIms8W68WFjLGsFAsLV_tfwwshusHyw",
+        authDomain: "custom-site-40168.firebaseapp.com",
+        databaseURL: "https://custom-site-40168-default-rtdb.asia-southeast1.firebasedatabase.app",
+        storageBucket: "custom-site-40168.appspot.com",
+        messagingSenderId: "23544350313",
+        appId: "1:23544350313:web:e3333d7c5164e5d0d344f8"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const database = firebase.database();
+    const currentLogin = sessionStorage.getItem('userLogin'); 
+    if (currentLogin) {
+        database.ref('users/' + currentLogin).once('value').then((snapshot) => {
+            if (snapshot.exists()) {
+                const userData = snapshot.val();
+                document.getElementById('clientName').value = userData.username;
+            }
+        }).catch((error) => {
+            console.error("Ошибка загрузки имени из Firebase:", error);
+        });
+    } else {
+        document.getElementById('clientName').value = "Гость (Войдите в аккаунт)";
+    }
+        document.getElementById('sendOrderBtn').addEventListener('click', function() {
+            const nameValue = document.getElementById('clientName').value;
+            const commentValue = document.getElementById('commentsite').value;
+            const phoneValue = document.getElementById('phone_number').value;
+
+            if (nameValue === "Гость (Войдите в аккаунт)") {
+                alert("Ошибка! Гости не могут оставлять заказы. Пожалуйста, войдите в аккаунт.");
+                window.location.href = "login.html";
+                return;
+            }
+
+            if (!phoneValue.trim()) {
+                alert("Пожалуйста, введите ваш номер телефона для связи!");
+                return;
+            }
+            database.ref('orders/' + currentLogin).set({
+                username: nameValue,
+                phone: phoneValue,
+                comment: commentValue,
+                status: "Ожидает оплаты",
+                date: new Date().toLocaleDateString()
+            }).then(() => {
+                const tgToken = "8993659223:AAGUDfeB7H4IALnElm3fSClmgqHgcMHfH5g";
+                const tgChatId = "8772937687";
+                const tgMessage = `*Новый заказ в Lanc Studio!*\n\n` +
+                                  ` *Клиент:* ${nameValue}\n` +
+                                  ` *Телефон:* ${phoneValue}\n` +
+                                  ` *Комментарий:* ${commentValue}\n` +
+                                  ` *Дата:* ${new Date().toLocaleDateString()}`;
+                fetch(`https://telegram.org{tgToken}/sendMessage`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        chat_id: tgChatId,
+                        text: tgMessage,
+                        parse_mode: 'Markdown'
+                    })
+                }).then(() => {
+                    alert("Ваш заказ успешно отправлен!");
+                    const messageText = `Здравствуйте, Lanc Studio! Я оставил заказ на сайте. Моё имя: ${nameValue}, телефон: ${phoneValue}.`;
+                    window.location.href = "https://wa.me" + encodeURIComponent(messageText); 
+                }).catch((tgError) => {
+                    console.error("Ошибка ТГ:", tgError);
+                    window.location.href = "https://wa.me";
+                });
+
+            }).catch((error) => {
+                alert("Ошибка отправки заказа в базу: " + error.message);
+            });
+        });
+
+</script>
