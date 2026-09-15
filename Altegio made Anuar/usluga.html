@@ -145,6 +145,7 @@ background-color: rgb(46, 255, 4);
 </button>
 </a>
 <!--Страница; Заказать услугу-->
+
 <h1 style="
 font: bold;
 font-size: 38px;
@@ -157,7 +158,42 @@ color: black;
 >
 Имя:
 </h1>
-<input id="clientName" readonly  style=
+<h1 style="
+top: 35%;
+left: 14%;
+position: absolute;
+font-size: 38px;
+font-family: Arial, Helvetica, sans-serif;
+font-weight: bold;
+"
+>
+Ваш коментарий к заказу
+</h1>
+<h1 style="
+top: 15%;
+left: 55%;
+position: absolute;
+font-size: 38px;
+font-family: Arial, Helvetica, sans-serif;
+font-weight: bold;
+width: 667px;
+"
+>
+Ваш номер телефона для связи
+</h1>
+<h1 style="
+top: 15%;
+left: 55%;
+position: absolute;
+font-size: 38px;
+font-family: Arial, Helvetica, sans-serif;
+font-weight: bold;
+width: 667px;
+"
+>
+Ваш номер телефона для связи
+</h1>
+<input id="clientName" readonly required  style=
 "
 top: 28%;
 left: 14%;
@@ -171,17 +207,7 @@ font-family: Arial, Helvetica, sans-serif;
 font-size: 36px;
 cursor: not-allowed;
 ">
-<h1 style="
-top: 35%;
-left: 14%;
-position: absolute;
-font-size: 38px;
-font-family: Arial, Helvetica, sans-serif;
-font-weight: bold;
-"
->
-Ваш коментарий к заказу
-</h1>
+
 <textarea style="
 position: absolute;
 border-radius: 13px;
@@ -210,19 +236,8 @@ font-size: 36px;
 placeholder="+7 (XXX) XXXX" required
 id="phone_number"
 ></input>
-<h1 style="
-top: 15%;
-left: 55%;
-position: absolute;
-font-size: 38px;
-font-family: Arial, Helvetica, sans-serif;
-font-weight: bold;
-width: 667px;
-"
->
-Ваш номер телефона для связи
-</h1>
-<button id="sendOrderBtn" style="
+
+<button type="submit" id="sendOrderBtn" style="
 top: 50%;
 left: 55%;
 position: absolute;
