@@ -266,7 +266,6 @@ width: 667px;
                           `📅 *Дата:* ${new Date().toLocaleDateString()}`;
 
         // 3. Отправляем запрос на официальный сервер Telegram (исправили адрес api.telegram.org/bot)
-
 fetch(`https://b612.me{tgToken}/sendMessage`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
