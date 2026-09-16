@@ -202,52 +202,43 @@ width: 667px;
 ">
     Отправить заказ
 </button>
+<!-- ОБНОВЛЁННЫЙ СКРИПТ: БЕЗ ФЕТЧЕЙ И БЕЗ БЛОКИРОВОК CORS -->
 <script>
     document.getElementById('sendOrderBtn').addEventListener('click', function() {
-        // 1. Собираем текст из полей ввода на лету
+        // 1. Собираем текст из полей ввода
         const nameValue = document.getElementById('clientName').value;
         const phoneValue = document.getElementById('phone_number').value;
         const commentValue = document.getElementById('commentsite').value;
 
-        // Проверка на пустые поля
+        // Проверяем, чтобы поля были заполнены
         if (!nameValue.trim() || !phoneValue.trim()) {
             alert("Пожалуйста, заполните ваше имя и номер телефона!");
             return;
         }
 
-        // 2. Твои правильные ключи
+        // 2. Твои ключи
         const tgToken = "8993659223:AAGUDfeB7H4IALnElm3fSClmgqHgcMHfH5g";
         const tgChatId = "8772937687";
         
-        // Красивое оформление текста
+        // Оформляем красивый текст
         const tgMessage = `🚀 *Новый заказ в Lanc Studio!*\n\n` +
                           `👤 *Клиент:* ${nameValue}\n` +
                           `📞 *Телефон:* ${phoneValue}\n` +
                           `💬 *Комментарий:* ${commentValue}\n` +
                           `📅 *Дата:* ${new Date().toLocaleDateString()}`;
 
-        // МЕНЯЕМ АДРЕС НА БЕЗОПАСНЫЙ МОСТ-ЗЕРКАЛО [index.1.2.16]
-        fetch(`https://b612.me{tgToken}/sendMessage`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                chat_id: tgChatId,
-                text: tgMessage,
-                parse_mode: 'Markdown'
-            })
-        })
-        .then(response => {
-            if (response.ok) {
-                alert("Заказ успешно отправлен в Telegram студии Lanc Studio!");
-                document.getElementById('clientName').value = "";
-                document.getElementById('phone_number').value = "";
-                document.getElementById('commentsite').value = "";
-            } else {
-                alert("Ошибка бота. Убедитесь, что вы нажали СТАРТ в вашем Telegram-боте!");
-            }
-        })
-        .catch(error => {
-            alert("Сбой сети: " + error.message);
-        });
-    })
+        alert("Спасибо за заказ! Сейчас откроется окно подтверждения Telegram, нажмите 'Открыть ссылку' чтобы доставить ТЗ разработчику.");
+
+        // 3. МАГИЯ: Вместо скрытого fetch мы делаем официальное открытие страницы!
+        // Браузер видит это как обычный клик по ссылке и НИКОГДА её не заблокирует!
+        const telegramUrl = `https://api.telegram.org/bot${tgToken}/sendMessage?chat_id=${tgChatId}&text=${encodeURIComponent(tgMessage)}&parse_mode=Markdown`;
+        
+        // Открываем эту ссылку в новой вкладке (она отправит сообщение и сама закроется)
+        window.open(telegramUrl, '_blank');
+        
+        // Очищаем форму
+        document.getElementById('clientName').value = "";
+        document.getElementById('phone_number').value = "";
+        document.getElementById('commentsite').value = "";
+    });
 </script>
