@@ -148,33 +148,10 @@ background-color: rgb(46, 255, 4);
 </button>
 </a>
 <script>
-function checkAuth() {
-    const userIsLoggedIn = sessionStorage.getItem('isLoggedIn');
-
-    if (userIsLoggedIn === 'true') {
-        window.location.href = "usluga.html";
-    } else {
-        alert("Для заказа услуг необходимо войти в аккаунт или зарегистрироваться в Lanc Studio!");
-        window.location.href = "register.html";
-    }
-}
     const menuToggle = document.getElementById('menuToggle');
     const mySidebar = document.getElementById('mySidebar');
     menuToggle.addEventListener('click', function() {
         mySidebar.classList.toggle('open');
     });
-    function checkCabinet() {
-    // Робот лезет в память браузера и проверяет флаг входа
-    const userIsLoggedIn = sessionStorage.getItem('isLoggedIn');
-
-    if (userIsLoggedIn === 'true') {
-        // Если залогинен — со спокойной душой пускаем в кабинет!
-        window.location.href = "Altegio.html";
-    } else {
-        // Если нет — выводим табличку и телепортируем на регистрацию! [index]
-        alert("Для доступа в личный кабинет необходимо зарегистрироваться или войти в аккаунт Lanc Studio!");
-        window.location.href = "register.html";
-    }
-}
 </script>
 

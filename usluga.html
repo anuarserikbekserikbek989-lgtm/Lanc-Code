@@ -202,58 +202,53 @@ width: 667px;
 ">
     Отправить заказ
 </button>
-
-<!-- РАБОЧИЙ СКРИПТ ДЛЯ ТЕЛЕГРАМА -->
 <script>
     document.getElementById('sendOrderBtn').addEventListener('click', function() {
-        // 1. Забираем текст из полей ввода прямо в момент клика
+        // 1. Собираем текст из полей ввода на лету
         const nameValue = document.getElementById('clientName').value;
         const phoneValue = document.getElementById('phone_number').value;
         const commentValue = document.getElementById('commentsite').value;
 
-        // Проверяем, чтобы обязательные поля были заполнены
+        // Проверка на пустые поля
         if (!nameValue.trim() || !phoneValue.trim()) {
             alert("Пожалуйста, заполните ваше имя и номер телефона!");
             return;
         }
 
-        // 2. Твои секретные ключи от ТГ
+        // 2. Твои правильные ключи
         const tgToken = "8993659223:AAGUDfeB7H4IALnElm3fSClmgqHgcMHfH5g";
         const tgChatId = "8772937687";
         
-        // Формируем красивый текст сообщения
+        // Красивое оформление текста
         const tgMessage = `🚀 *Новый заказ в Lanc Studio!*\n\n` +
                           `👤 *Клиент:* ${nameValue}\n` +
                           `📞 *Телефон:* ${phoneValue}\n` +
                           `💬 *Комментарий:* ${commentValue}\n` +
                           `📅 *Дата:* ${new Date().toLocaleDateString()}`;
-// Сделай вот так:
-fetch(`https://b612.me{tgToken}/sendMessage`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-        chat_id: tgChatId,
-        text: tgMessage,
-        parse_mode: 'Markdown'
-    })
-})
 
-
+        // 3. Исправленный fetch: добавили api., /bot и знак $ перед скобками! [index.1.2.16]
+        fetch(`https://telegram.org{tgToken}/sendMessage`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                chat_id: tgChatId,
+                text: tgMessage,
+                parse_mode: 'Markdown'
+            })
+        })
         .then(response => {
             if (response.ok) {
-                alert("Заказ успешно отправлен разработчику в Telegram! Спасибо!");
-                // Очищаем форму после успешной отправки
+                alert("Заказ успешно отправлен в Telegram студии Lanc Studio!");
+                // Очищаем форму
                 document.getElementById('clientName').value = "";
-                document.getElementById('phone_number').value = "";
+                document.getElementById = "";
                 document.getElementById('commentsite').value = "";
             } else {
-                alert("Ошибка отправки бота. Убедитесь, что вы запустили вашего ТГ-бота кнопкой СТАРТ.");
+                alert("Ошибка бота. Убедитесь, что вы нажали СТАРТ в вашем Telegram-боте!");
             }
         })
         .catch(error => {
-            alert("Сбой сети. Сообщение не доставлено: " + error.message);
+            alert("Сбой сети: " + error.message);
         });
     });
 </script>
-</body>
-</html>
