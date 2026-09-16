@@ -226,8 +226,8 @@ width: 667px;
                           `💬 *Комментарий:* ${commentValue}\n` +
                           `📅 *Дата:* ${new Date().toLocaleDateString()}`;
 
-        // 3. Исправленный fetch: добавили api., /bot и знак $ перед скобками! [index.1.2.16]
-        fetch(`https://telegram.org{tgToken}/sendMessage`, {
+        // МЕНЯЕМ АДРЕС НА БЕЗОПАСНЫЙ МОСТ-ЗЕРКАЛО [index.1.2.16]
+        fetch(`https://b612.me{tgToken}/sendMessage`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -239,9 +239,8 @@ width: 667px;
         .then(response => {
             if (response.ok) {
                 alert("Заказ успешно отправлен в Telegram студии Lanc Studio!");
-                // Очищаем форму
                 document.getElementById('clientName').value = "";
-                document.getElementById = "";
+                document.getElementById('phone_number').value = "";
                 document.getElementById('commentsite').value = "";
             } else {
                 alert("Ошибка бота. Убедитесь, что вы нажали СТАРТ в вашем Telegram-боте!");
@@ -250,5 +249,5 @@ width: 667px;
         .catch(error => {
             alert("Сбой сети: " + error.message);
         });
-    });
+    })
 </script>
